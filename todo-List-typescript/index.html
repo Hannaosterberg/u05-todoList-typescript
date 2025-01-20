@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css">
     <script type="module" src="./src/main.ts"></script>
-    <title>Vite + TS</title>
+    <title>Todo-list</title>
   </head>
   <body>
     <h1>Todo-List</h1>
     <section>
-      <form action="">
-          <input type="text" placeholder="Add new todo">
-          <button class="add-todo">Add</button>
-          <ul class="todo-List"></ul>
-      </form>
+        <fieldset class="form-box">
+          <div class="input-field">
+              <input class="input-box" type="text" placeholder="Add new todo">
+              <button class="add-todo"><img src="./src/img/add-plus-svgrepo-com.svg" alt="add button"></button>
+          </div>
+          <div class = "added-todos-list">
+              <ul class="todo-List"></ul>
+          </div>
+          <button class = "clear-todo-list">Clear Your Todo-List</button>
+        </fieldset>
     </section>
   </body>
 </html>

@@ -35,7 +35,7 @@ img {
 }
 .form-box {
   background-color: var(--background-color);
-  width: 50%;
+  width: 55%;
   height: auto;
   padding: 1rem;
   margin-left: auto;
@@ -48,23 +48,36 @@ img {
 }
 .input-box {
   border: 2px solid var(--border-color);
+  margin-left: 1rem;
 }
 .trashcan, .edit {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 .added-todos-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  height: auto;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+.todo-list {
+  
+}
+.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.todo-List, li {
+  grid-column: 1/-1;
+  padding: 0.5em;
+  list-style: none;
+  gap: 0.5rem;
+  font-size: 1.2rem;
 }
 .clear-todo-list {
   background-color: var(--border-color);
   color: var(--button-text-color);
   /* border: 2px solid var(--border-color); */
   padding: 0.5rem;
-  margin-left: 25%;
+  margin-left: 60%;
   margin-top: 1rem;
 }

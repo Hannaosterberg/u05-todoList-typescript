@@ -1,5 +1,5 @@
 import supabase from "./supabaseClient.ts";
-import { fetchItems, insertItems, updateEditTodo, deleteTodo, getTodo } from "./crud.ts";
+import { fetchItems, insertItems, updateEditTodo, deleteTodo, getTodo, clearAllTodos } from "./crud.ts";
 
 console.log(supabase)
 
@@ -15,7 +15,6 @@ export interface Todo {
 
 // let addedToDos: Todo[] = [];
 
-
 export const displayToDo = async () => {
 	const fetchedTodos: Todo[] = await fetchItems();
 	console.log(fetchedTodos)
@@ -23,14 +22,18 @@ export const displayToDo = async () => {
 	fetchedTodos.forEach((todo) => {
 		const todoElement = document.createElement("li") as HTMLLIElement;
 		todoElement.innerHTML = `
+								<div class = "li-item">
 								<input class = "checkbox" type="checkbox" ${todo.completed ? "checked" : ""} class = "checkbox" data-id = "${todo.id}">	
 								<span class = "todo-text" data-id = "${todo.id}" >${todo.text}</span>
+								<div class = "buttons">
 								<button class = "edit-todo" data-id="${todo.id}">
 								<img class = "edit"src="./src/img/edit-pencil-svgrepo-com.svg" alt="edit button">
 								</button>
 								<button class = "remove-todo" data-id="${todo.id}">
 								<img class = "trashcan" src="./src/img/delete-svgrepo-com.svg" alt="trashcan button">
 								</button>
+								</div>
+								</div>
 								`
 	toDoList.appendChild(todoElement);
 	});
@@ -76,12 +79,12 @@ const addToDo = (): void => {
 // 	displayToDo();
 // }
 
-const clearTodos = (): void => {
+// const clearTodos = (): void => {
 
-	// addedToDos = [];
-	// saveToLocalStorage();
-	// displayToDo();
-}
+// 	// addedToDos = [];
+// 	// saveToLocalStorage();
+// 	// displayToDo();
+// }
 
 // const saveToLocalStorage = (): void => {
 // 	localStorage.setItem("todos", JSON.stringify(addedToDos));
@@ -96,7 +99,7 @@ const addEventListeners = (): void => {
 	checkboxes.forEach(checkbox => {
 		checkbox.addEventListener("change", (event) => {
 			const id: string = (event.target as HTMLInputElement).dataset.id!;
-			getTodo(id)
+			getTodo(id);
 		});
 	});
 
@@ -123,7 +126,7 @@ const addEventListeners = (): void => {
 	if(clearBtn) {
 		clearBtn.addEventListener("click", (event) => {
 			event.preventDefault();
-			clearTodos();
+			clearAllTodos();
 		})
 	}
 }

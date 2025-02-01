@@ -16,6 +16,10 @@
   --text-color: rgb(27, 27, 80);
 }
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
   background-size:cover;
         -webkit-animation: slidein 100s;
@@ -58,6 +62,59 @@ H1 {
   font-size: 3.5rem;
   margin: 3rem 0 1rem 0 ;
 }
+h2 {
+  color: var(--text-color);
+}
+.form-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.toggle-btn {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.toggle-btn.active {
+  color: var(--button-text-color);
+  background-color: var(--border-color);
+  border-radius: 5px;
+}
+.toggle-btn:hover {
+  background-color: #594fa6;
+  color: #fff;
+}
+.form {
+  display: none;
+}
+.form.active {
+  display: block;
+}
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--border-color);
+  border: none;
+  color: var(--button-text-color);
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+form button:hover {
+  background-color: #594fa6;
+}
 img {
   height: auto;
   width: 100%;
@@ -71,22 +128,26 @@ img {
 }
 .form-box {
   background-color: var(--background-color);
-  width: 55%;
+  width: 60%;
   height: auto;
   padding: 1rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.5rem;
+  display: none;
 }
 .input-field {
   display: flex;
   gap: 4px;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 .input-box {
   border: 2px solid var(--border-color);
   border-radius: 5px;
   margin-left: 1rem;
+  text-align: center;
+  width: 15rem;
 }
 .trashcan, .edit {
   height: 1.5rem;
@@ -130,11 +191,37 @@ input[type="checkbox"] {
   height: 1.5rem;
   accent-color: var(--text-color);
 }
-.clear-todo-list {
+.btn-container {
+  display: flex;
+  margin: auto;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.clear-todo-list, .logOut-btn {
   background-color: var(--border-color);
   color: var(--button-text-color);
-  padding: 0.5rem;
-  margin-left: 60%;
+  padding: 15px;
   margin-top: 1rem;
   border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.clear-todo-list:hover, .logOut-btn:hover {
+  background-color: #594fa6;
+}
+.login-container {
+  background-color: var(--background-color);
+  width: 60%;
+  height: auto;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+.register-message {
+  margin-top: 1rem;
+  text-align: center;
 }

@@ -1,23 +1,30 @@
 import supabase from "./supabaseClient.ts";
 import { fetchItems, insertItems, updateEditTodo, deleteTodo, getTodo, clearAllTodos } from "./crud.ts";
+import { signIn, signUp, signOut } from "./auth.ts";
 
 console.log(supabase)
 
 const addTodoBtn = document.querySelector(".add-todo") as HTMLButtonElement;
-const userInput = document.querySelector("input") as HTMLInputElement;
+const userInput = document.querySelector(".input-box") as HTMLInputElement;
 const toDoList = document.querySelector(".todo-List") as HTMLUListElement;
 const clearBtn = document.querySelector(".clear-todo-list") as HTMLButtonElement;
+const loginBtn = document.getElementById("loginBtn") as HTMLButtonElement;
+const registerBtn = document.getElementById("registerBtn") as HTMLButtonElement;
+const loginForm = document.getElementById("loginForm") as HTMLDivElement;
+const registerForm = document.getElementById("registerForm") as HTMLDivElement;
+const signInForm = document.querySelector("#login-form") as HTMLInputElement;
+const signUpForm = document.querySelector("#signup-form") as HTMLInputElement;
+const loginContainer = document.querySelector(".login-container") as HTMLFieldSetElement;
+const formBox = document.querySelector(".form-box") as HTMLFieldSetElement;
+const logOutBtn = document.querySelector(".logOut-btn") as HTMLButtonElement;
 export interface Todo {
 	id?: string,
 	text: string,
 	completed: boolean
 }
 
-// let addedToDos: Todo[] = [];
-
 export const displayToDo = async () => {
 	const fetchedTodos: Todo[] = await fetchItems();
-	console.log(fetchedTodos)
 	toDoList.innerHTML = "";
 	fetchedTodos.forEach((todo) => {
 		const todoElement = document.createElement("li") as HTMLLIElement;
@@ -48,51 +55,11 @@ const addToDo = (): void => {
 			text: newTodoText,
 			completed: false
 		};
-		// addedToDos.push(newTodo);
 		userInput.value = "";
 		insertItems(newTodo)
-		// saveToLocalStorage();
-		// displayToDo();
 	}
 
 }
-// const editText = (id: string, newText: string): void => {
-// 	// const todo: Todo | undefined = addedToDos.find(todo => todo.id === id);
-// 		updateEditTodo(id, newText)
-// 		saveToLocalStorage();
-// 		displayToDo();
-	
-// }
-// const isDone = (status: string): void => {
-// 	const todo: Todo | undefined = addedToDos.find(todo => todo.id === status);
-// 	if(todo) {
-// 		todo.completed = !todo.completed;
-// 		saveToLocalStorage();
-// 		displayToDo();
-// 	}
-// }
-
-// const removeToDo = (id: string): void => {
-// 	// addedToDos = addedToDos.filter(todo => todo.id !== id);
-// 	deleteTodo(id)
-// 	saveToLocalStorage();
-// 	displayToDo();
-// }
-
-// const clearTodos = (): void => {
-
-// 	// addedToDos = [];
-// 	// saveToLocalStorage();
-// 	// displayToDo();
-// }
-
-// const saveToLocalStorage = (): void => {
-// 	localStorage.setItem("todos", JSON.stringify(addedToDos));
-// }
-// const loadFromLocalStorage = (): Todo[] => {
-// 	const savedTodos: string | null = localStorage.getItem("todos");
-// 	return savedTodos ? JSON.parse(savedTodos) as Todo[] : [];
-// }
 
 const addEventListeners = (): void => {
 	const checkboxes = document.querySelectorAll(".checkbox");
@@ -134,8 +101,52 @@ const addEventListeners = (): void => {
 addTodoBtn.addEventListener("click", (event)=> {
 	event.preventDefault();
 	addToDo();
+	console.log("hej")
 })
+signInForm.addEventListener("submit", (event) => {
+	event.preventDefault();
+	const email = (document.querySelector("#email") as HTMLInputElement).value;
+	const password = (document.querySelector("#password") as HTMLInputElement).value;
+	signIn(email, password).then(sucess => {
+		if(sucess) {
+			formBox.style.display = "block";
+			loginContainer.style.display = "none";
+			displayToDo();
+		}
+	})
+})
+signUpForm.addEventListener("submit", (event) => {
+	event.preventDefault();
+	const email = (document.querySelector("#signup-email") as HTMLInputElement);
+	const password = (document.querySelector("#signup-password") as HTMLInputElement);
+	signUp(email.value, password.value);
+})
+loginBtn.addEventListener("click", () => {
+    loginForm.classList.add("active");
+    registerForm.classList.remove("active");
+    loginBtn.classList.add("active");
+    registerBtn.classList.remove("active");
+});
+registerBtn.addEventListener("click", () => {
+    registerForm.classList.add("active");
+    loginForm.classList.remove("active");
+    registerBtn.classList.add("active");
+    loginBtn.classList.remove("active");
+});
+logOutBtn.addEventListener("click", (event) =>{
+	event.preventDefault();
+	formBox.style.display = "none"
+	loginContainer.style.display = "block";
+	const email = (document.querySelector("#email") as HTMLInputElement);
+	const password = (document.querySelector("#password") as HTMLInputElement);
+	signOut();
+	email.value = "";
+	password.value = "";
+} )
+
 window.onload = () => {
-	// addedToDos = loadFromLocalStorage();
-	displayToDo();
+	if (localStorage.sbXqnbfgkbaszibshmrqtrAuthToken) {
+	formBox.style.display = "block";
+	loginContainer.style.display = "none";
+	}
 }

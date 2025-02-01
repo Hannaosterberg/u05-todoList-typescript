@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <script type="module" src="./src/main.ts"></script>
+    <title>Todo-list</title>
+  </head>
+  <body>
+    <main>
+      <h1>Todo-List</h1>
+      <fieldset class="login-container">
+        <div class="form-toggle">
+          <button id="loginBtn" class="toggle-btn active">Sign In</button>
+          <button id="registerBtn" class="toggle-btn">Register</button>
+        </div>
+        <div id="loginForm" class="form active">
+          <h2>Sign in</h2>
+          <form id = "login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="sign-in-btn">Sign In</button>
+          </form>
+        </div>
+        <div id="registerForm" class="form">
+          <h2>Register</h2>
+          <form id="signup-form">
+            <input type="email" id="signup-email" placeholder="Email" required />
+            <input type="password" id="signup-password" placeholder="Password" required />
+            <button type="submit" id="sign-up-btn">Sign Up</button>
+            <div class="register-message"></div>
+          </form>
+        </div>
+      </fieldset>
+        <fieldset class="form-box">
+          <div class="input-field">
+              <input class="input-box" type="text" placeholder="Add new todo">
+              <button class="add-todo"><img src="./src/img/add-plus-svgrepo-com.svg" alt="add button"></button>
+          </div>
+          <div class = "added-todos-list">
+              <ul class="todo-List"></ul>
+          </div>
+          <div class="btn-container">
+            <button class = "clear-todo-list">Clear Your Todo-List</button>
+            <button class="logOut-btn">Logout</button>
+          </div>
+        </fieldset>
+    </main>
+  </body>
+</html>

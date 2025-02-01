@@ -3,6 +3,15 @@ import { Todo } from "./main.ts";
 import { displayToDo } from "./main.ts";
 
 
+supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN') {
+        console.log('User signed in:', session);
+        displayToDo(); 
+    } else if (event === 'SIGNED_OUT') {
+        console.log('User signed out');
+    }
+});
+
 export async function fetchItems() {
     const {data, error} = await supabase
     .from("TodoList")

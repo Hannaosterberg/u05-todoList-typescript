@@ -1,1 +1,13 @@
 # u05-todoList-typescript
+
+I detta projekt använder jag Vite och vanilla typescript, jag har valt att inte importera något bibliotek, jag började denna uppgift med att uppnå alla G krav för att sedan testa på VG kraven och använda mig utav Supabase. Jag skapade först en applikation med alla G krav där jag använder mig av interface för att beskriva todo-uppgifterna och localstorage för att spara todo listan. Användaren kan se alla todos, lägga till en ny, ta bort en todo, ändra texten, checka av om en todo är klar och även rensa hela listan på alla todos. 
+
+Jag tyckte Supabase var lite svårt att förstå först då vi aldrig jobbat med en server tidigare. Med hjälp av supabases dokumentation och med chatgpt kunde jag få till en helt ok fungerade to-do list applikation. Det finns en del buggar som jag är medveten om att man skulle behöva fixa men ingen kod är perfekt. I mitt supabase projekt skapade jag en table editor där min todolist finns och med alla properties för att beskriva en todouppgift, där jag även har ett userID som property för att användaren ska kunna hämta sig egen lista. 
+Under authentication har jag mina användare, jag har även valt att när nya användare registrerar sig behöver de ej verifiera via email. 
+
+Min applikation är som sagt inte perfekt men användare kan registrera sig och logga in, de kan skapa sin egna todolist i applikationen och som i G kraven kan de lägga till, ta bort, redigera, checka av todos eller rensa hela listan. De kan även logga ut och när de loggar in igen så kan de se sina sparade todos. 
+De buggar som behöver fixas är att när man uppdaterar sidan så kommer man tillbaka till logga in rutan och då är användaren fortfarande inloggad så man måste aktivt trycka på logga ut knappen för att kunna loggas ut korrekt. Jag får ett error meddelande i konsollen när en användare ska registrera sig att det är internal server error och att databasen har problem att spara den nya användaren, dock när jag kollar i supabase ser jag att användaren sparas ändå, så det kan vara någon bugg från deras sida. Sen vet jag inte varför men jag får alltid upp dubbelt i mina konsollloggar så om jag har loggat ett meddelande när jag trycker på en knapp så får jag ut det 2 ggr i konsollen så det är också en bugg som skulle behöva fixas. Jag har ej stylat med några queryselectors vilket skulle vart bra men fokuserade mest på en fungerande kod.
+
+I sin helhet fungerar todo-list applikationen, jag skulle velat ha en snyggare styling och att man kan trycka enter när man skriver in sin mail och lösenord istället för att behöva trycka på logga in knappen. Men jag är nöjd över mitt projekt och att jag lyckats få den att fungera med supabase, det var inte det lättaste. 
+
+*[Här är länk till netlify]()*

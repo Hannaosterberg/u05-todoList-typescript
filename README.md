@@ -10,4 +10,4 @@ De buggar som behöver fixas är att när man uppdaterar sidan så kommer man ti
 
 I sin helhet fungerar todo-list applikationen, jag skulle velat ha en snyggare styling och att man kan trycka enter när man skriver in sin mail och lösenord istället för att behöva trycka på logga in knappen. Men jag är nöjd över mitt projekt och att jag lyckats få den att fungera med supabase, det var inte det lättaste. 
 
-*[Här är länk till netlify]()*
+*[Här är länk till netlify](https://u05-todo-list.netlify.app/)*

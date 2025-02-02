@@ -34,10 +34,10 @@ export const displayToDo = async () => {
 								<span class = "todo-text" data-id = "${todo.id}" >${todo.text}</span>
 								<div class = "buttons">
 								<button class = "edit-todo" data-id="${todo.id}">
-								<img class = "edit"src="./public/assets/edit-pencil-svgrepo-com.svg" alt="edit button">
+								<img class = "edit"src="/assets/edit-pencil-svgrepo-com.svg" alt="edit button">
 								</button>
 								<button class = "remove-todo" data-id="${todo.id}">
-								<img class = "trashcan" src="./public/assets/delete-svgrepo-com.svg" alt="trashcan button">
+								<img class = "trashcan" src="/assets/delete-svgrepo-com.svg" alt="trashcan button">
 								</button>
 								</div>
 								</div>
